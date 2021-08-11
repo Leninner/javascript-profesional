@@ -19,40 +19,7 @@
             <button>Play/Pause</button>
         </main>
 
-        <script>
-            // Función constructora
-            function MediaPlayer(config) {
-                // Recibe un objeto y accede a la data de la llave (el); también podemos cambiar la manera de acceder a la data de config, se puede cambiar (el).
-                this.media = config.el;
-            }
-
-            // Métodos añadidos al prototype
-            // No se puede utilizar funciones de flecha en métodos de las funciones.
-
-            MediaPlayer.prototype.play = function () {
-                this.media.play();
-            };
-
-            MediaPlayer.prototype.pause = function () {
-                this.media.pause();
-            };
-
-            //Toggle (alternar) sirve para alternar los movimientos
-            MediaPlayer.prototype.togglePlay = function () {
-                if (this.media.paused) {
-                    //.paused sirve para comprobar si el video está pausado o no
-                    this.play();
-                } else {
-                    this.pause();
-                }
-            };
-
-            const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
-            const player = new MediaPlayer({ el: video }); // Creando una instancia de la función constructora, le debemos pasar un objeto con la llave (el) y la data que es el (video).
-            //NOTE: (el) es un nombre de llave, lo que significa que si podremos cambiarlo después
-
-            const button = document.querySelector("button");
-            button.onclick = () => player.togglePlay();
-        </script>
+        <script type="module" src="./assets/index.js"></script>
+        <!-- Al dar a un script el tipo módulo, todo lo declarado en el src queda con scope modular. Es decir que solo se puede acceder a el en el archivo, y no fuera de él. Sin embargo funciona bien el programa -->
     </body>
 </html>
