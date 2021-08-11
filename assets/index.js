@@ -5,5 +5,8 @@ const video = document.querySelector("video"); // Cuando es el único elemento n
 const player = new MediaPlayer({ el: video, plugins: [new autoPlay()] }); // Creando una instancia de la función constructora, le debemos pasar un objeto con la llave (el) y la data que es el (video).
 //NOTE: (el) es un nombre de llave, lo que significa que si podremos cambiarlo después
 
-const button = document.querySelector("button");
-button.onclick = () => player.togglePlay();
+const btnPlayPause = document.querySelector("#btnPlayPause"),
+    btnMuteUnmute = document.querySelector("#btnMuteUnmute");
+
+btnPlayPause.onclick = () => player.togglePlay();
+btnMuteUnmute.onclick = () => player.toggleMuted();
