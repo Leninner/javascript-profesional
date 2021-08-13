@@ -1,5 +1,5 @@
 import MediaPlayer from "./mediaPlayer.js";
-import autoPlay from "./plugins/autoplay.js";
+import autoPlay from "./plugins/autoPlay.js";
 import autoPause from "./plugins/autoPause.js";
 
 const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
@@ -16,3 +16,9 @@ const btnPlayPause = document.querySelector("#btnPlayPause"),
 
 btnPlayPause.onclick = () => player.togglePlay();
 btnMuteUnmute.onclick = () => player.toggleMuted();
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js").catch((error) => {
+        console.error(error);
+    });
+}
