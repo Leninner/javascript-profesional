@@ -8,7 +8,7 @@
         "platzi"
     ],
     "scripts": {
-        "start": "parcel index.html typeScript/index.html typeScript/**/*.html"
+        "start": "parcel index.html typeScript/index.html"
     },
     "devDependencies": {
         "parcel-bundler": "^1.12.5",

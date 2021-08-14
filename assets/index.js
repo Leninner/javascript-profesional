@@ -18,7 +18,7 @@ btnPlayPause.onclick = () => player.togglePlay();
 btnMuteUnmute.onclick = () => player.toggleMuted();
 
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch((error) => {
+    navigator.serviceWorker.register("/sw.js").catch((error) => {
         console.error(error);
     });
 }
