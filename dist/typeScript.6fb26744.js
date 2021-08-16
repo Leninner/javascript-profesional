@@ -123,7 +123,98 @@ function sum(a, b) {
 }
 
 var SUM = sum(78, 45);
-console.log(SUM);
+console.log(SUM); // Boolean
+
+var booleano = false; // Números
+
+var firstNumber = 45;
+var secondNumber = 78;
+var result = firstNumber + secondNumber; // String
+
+var saludo = "Me llamo Lucas"; // Arreglos
+
+var peopple = [];
+peopple = ["Lenin", "Mathias", "Carlos", "Pepe"];
+var numbers = [];
+numbers.push(45);
+numbers.push(789);
+var numbersAndStrings = [];
+numbersAndStrings.push("Lenin");
+numbersAndStrings.push(789); // Enum
+
+var Colores;
+
+(function (Colores) {
+  Colores["rojo"] = "Rojo";
+  Colores["verde"] = "Verde";
+  Colores["azul"] = "Azul";
+  Colores["amarillo"] = "Amarillo";
+})(Colores || (Colores = {}));
+
+var colorFavorito = Colores.verde;
+console.log("Mi color favorito es: " + colorFavorito); // Any
+
+var comodin = "Joker";
+comodin = {
+  type: "Wildcar"
+}; // Object
+
+var someObject = {
+  type: "Wildcard"
+}; // Funciones
+
+function suma(a, b) {
+  return a + b;
+}
+
+var add = suma(12, 78);
+console.log(add);
+
+function createAdder(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+var sumar = createAdder(12);
+var addTwelve = sumar(7);
+
+function fullName(name, lastName) {
+  if (lastName === void 0) {
+    lastName = "Mazabanda";
+  }
+
+  return name + " " + lastName;
+}
+
+var richard = fullName("Richard");
+console.log(richard); // Interfaces
+
+var Color;
+
+(function (Color) {
+  Color["red"] = "Red";
+  Color["green"] = "Green";
+})(Color || (Color = {}));
+
+var rectan = {
+  ancho: 4,
+  alto: 6,
+  color: Color.green
+};
+
+function area(r) {
+  return r.ancho * r.alto;
+}
+
+var areaRect = area(rectan);
+console.log(areaRect);
+
+rectan.toString = function () {
+  return this.color ? "Rectangulo " + this.color : "Un rectángulo";
+};
+
+console.log(rectan.toString());
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -152,7 +243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44861" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45569" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
