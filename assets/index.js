@@ -1,6 +1,6 @@
 import MediaPlayer from "./mediaPlayer.js";
 import autoPlay from "./plugins/autoPlay.js";
-import autoPause from "./plugins/autoPause.js";
+import autoPause from "./plugins/autoPause.ts";
 
 const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
 const player = new MediaPlayer({
