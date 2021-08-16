@@ -1,3 +1,5 @@
+const { report } = require("process");
+
 const VERSION = "v1";
 
 self.addEventListener("install", (event) => {
@@ -6,6 +8,7 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
     const request = event.request;
+
     //get
     if (request.method !== "GET") {
         return;
@@ -22,14 +25,14 @@ async function precache() {
     const cache = await caches.open(VERSION);
 
     return cache.addAll([
-        "/",
-        "/index.html",
-        "/assets/index.ts",
-        "/assets/mediaPlayer.ts",
-        "/assets/plugins/autoPlay.ts",
-        "/assets/plugins/autoPause.ts",
-        "/assets/index.css",
-        "/assets/BigBuckBunny.mp4",
+        "./",
+        "./index.html",
+        "./assets/plugins/autoPause.ts",
+        "./assets/plugins/autoPlay.ts",
+        "./assets/index.ts",
+        "./assets/mediaPlayer.ts",
+        "./assets/index.css",
+        "./assets/BigBuckBunny.mp4",
     ]);
 }
 

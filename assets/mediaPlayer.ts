@@ -45,9 +45,9 @@ class MediaPlayer {
 
     toggleMuted() {
         if (this.media.muted) {
-            this.media.muted = !this.media.muted;
+            this.unmute();
         } else {
-            this.media.muted = this.media.muted;
+            this.mute();
         }
         //NOTE: Solución Simple
         // this.media.muted = !this.media.muted;
