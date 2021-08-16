@@ -1,6 +1,6 @@
-import MediaPlayer from "./mediaPlayer.js";
-import autoPlay from "./plugins/autoPlay.js";
-import autoPause from "./plugins/autoPause.ts";
+import MediaPlayer from "./mediaPlayer";
+import autoPlay from "./plugins/autoPlay";
+import autoPause from "./plugins/autoPause";
 
 const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
 const player = new MediaPlayer({
@@ -11,8 +11,8 @@ const player = new MediaPlayer({
 // Creando una instancia de la función constructora, le debemos pasar un objeto con la llave (el) y la data que es el (video).
 //NOTE: (el) es un nombre de llave, lo que significa que si podremos cambiarlo después
 
-const btnPlayPause = document.querySelector("#btnPlayPause"),
-    btnMuteUnmute = document.querySelector("#btnMuteUnmute");
+const btnPlayPause: HTMLElement = document.querySelector("#btnPlayPause"),
+    btnMuteUnmute: HTMLElement = document.querySelector("#btnMuteUnmute");
 
 btnPlayPause.onclick = () => player.togglePlay();
 btnMuteUnmute.onclick = () => player.toggleMuted();
