@@ -1,4 +1,4 @@
-import MediaPlayer from "../../mediaPlayer";
+import MediaPlayer from "../mediaPlayer";
 import Ads, { Ad } from "./ads";
 
 class AdsPlugin {

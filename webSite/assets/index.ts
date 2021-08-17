@@ -1,7 +1,7 @@
-import MediaPlayer from "./mediaPlayer";
-import autoPlay from "./plugins/autoPlay";
-import autoPause from "./plugins/autoPause";
-import AdsPlugin from "./plugins/Ads";
+import MediaPlayer from "@leninner/platzimediaplayer";
+import autoPlay from "@leninner/platzimediaplayer/lib/autoPlay";
+import autoPause from "@leninner/platzimediaplayer/lib/autoPause";
+import AdsPlugin from "@leninner/platzimediaplayer/lib/Ads";
 
 const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
 const player = new MediaPlayer({
