@@ -1,11 +1,12 @@
 import MediaPlayer from "./mediaPlayer";
 import autoPlay from "./plugins/autoPlay";
 import autoPause from "./plugins/autoPause";
+import AdsPlugin from "./plugins/Ads";
 
 const video = document.querySelector("video"); // Cuando es el único elemento no es necesario ponerlo con el identificar de selector
 const player = new MediaPlayer({
     el: video,
-    plugins: [new autoPlay(), new autoPause()],
+    plugins: [new autoPlay(), new autoPause(), new AdsPlugin()],
 });
 
 // Creando una instancia de la función constructora, le debemos pasar un objeto con la llave (el) y la data que es el (video).
