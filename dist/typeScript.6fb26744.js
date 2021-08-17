@@ -117,7 +117,42 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"typeScript/index.ts":[function(require,module,exports) {
+})({"typeScript/Singleton.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Singleton = function () {
+  function Singleton() {// Any
+  }
+
+  Singleton.getInstance = function () {
+    if (!Singleton.instance) {
+      Singleton.instance = new Singleton();
+    }
+
+    return Singleton.instance;
+  };
+
+  return Singleton;
+}();
+
+exports.default = Singleton;
+},{}],"typeScript/index.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 function sum(a, b) {
   return a + b;
 }
@@ -214,8 +249,14 @@ rectan.toString = function () {
   return this.color ? "Rectangulo " + this.color : "Un rectángulo";
 };
 
-console.log(rectan.toString());
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(rectan.toString()); // Implementación del patrón de diseño Singleton (Una clase siempre va a tener una sola instancia)
+
+var Singleton_1 = __importDefault(require("./Singleton"));
+
+var a = Singleton_1.default.getInstance();
+var b = Singleton_1.default.getInstance();
+console.log("La instancia A es igual a la instancia B? =>", a === b); // IMplementación del patrón de diseño Observer
+},{"./Singleton":"typeScript/Singleton.ts"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -243,7 +284,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40097" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36221" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

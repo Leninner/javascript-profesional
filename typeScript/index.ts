@@ -108,3 +108,14 @@ rectan.toString = function () {
 };
 
 console.log(rectan.toString());
+
+// Implementación del patrón de diseño Singleton (Una clase siempre va a tener una sola instancia)
+
+import Singleton from "./Singleton";
+
+const a = Singleton.getInstance();
+const b = Singleton.getInstance();
+
+console.log("La instancia A es igual a la instancia B? =>", a === b);
+
+// IMplementación del patrón de diseño Observer
