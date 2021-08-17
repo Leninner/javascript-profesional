@@ -255,7 +255,57 @@ var Singleton_1 = __importDefault(require("./Singleton"));
 
 var a = Singleton_1.default.getInstance();
 var b = Singleton_1.default.getInstance();
-console.log("La instancia A es igual a la instancia B? =>", a === b); // IMplementación del patrón de diseño Observer
+console.log("La instancia A es igual a la instancia B? =>", a === b);
+
+var BitcoinPrice = function () {
+  function BitcoinPrice() {
+    var _this = this;
+
+    this.observers = [];
+    var elemento = document.querySelector("#value");
+    elemento.addEventListener("input", function () {
+      _this.notify(elemento.value);
+    });
+  }
+
+  BitcoinPrice.prototype.suscribe = function (observer) {
+    this.observers.push(observer);
+  };
+
+  BitcoinPrice.prototype.unsusbribe = function (observer) {
+    var index = this.observers.findIndex(function (obs) {
+      return obs === observer;
+    });
+    this.observers.splice(index, 1);
+  };
+
+  BitcoinPrice.prototype.notify = function (data) {
+    this.observers.forEach(function (obs) {
+      obs.update(data);
+    });
+  };
+
+  return BitcoinPrice;
+}();
+
+var PriceDisplay = function () {
+  function PriceDisplay() {
+    this.elemento = document.querySelector("#price");
+  }
+
+  PriceDisplay.prototype.update = function (data) {
+    this.elemento.innerText = data;
+  };
+
+  return PriceDisplay;
+}();
+
+var value = new BitcoinPrice();
+var display = new PriceDisplay();
+value.suscribe(display);
+setTimeout(function () {
+  return value.unsusbribe(display);
+}, 5000);
 },{"./Singleton":"typeScript/Singleton.ts"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

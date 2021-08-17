@@ -118,4 +118,62 @@ const b = Singleton.getInstance();
 
 console.log("La instancia A es igual a la instancia B? =>", a === b);
 
-// IMplementación del patrón de diseño Observer
+// IMplementación del patrón de diseño Observer (Observador y Sujeto)
+// El observador tiene que tener métodos (Update, etc...)
+
+interface Observer {
+    update: (data: any) => void;
+}
+
+interface Subject {
+    suscribe: (observer: Observer) => void;
+    unsusbribe: (observer: Observer) => void;
+}
+
+class BitcoinPrice implements Subject {
+    observers: Observer[] = [];
+
+    constructor() {
+        const elemento: HTMLInputElement = document.querySelector("#value");
+
+        elemento.addEventListener("input", () => {
+            this.notify(elemento.value);
+        });
+    }
+
+    suscribe(observer: Observer) {
+        this.observers.push(observer);
+    }
+
+    unsusbribe(observer: Observer) {
+        const index = this.observers.findIndex((obs) => {
+            return obs === observer;
+        });
+
+        this.observers.splice(index, 1);
+    }
+
+    notify(data: any) {
+        this.observers.forEach((obs) => {
+            obs.update(data);
+        });
+    }
+}
+
+class PriceDisplay implements Observer {
+    private elemento: HTMLElement;
+
+    constructor() {
+        this.elemento = document.querySelector("#price");
+    }
+    update(data: any) {
+        this.elemento.innerText = data;
+    }
+}
+
+const value = new BitcoinPrice();
+const display = new PriceDisplay();
+
+value.suscribe(display);
+
+setTimeout(() => value.unsusbribe(display), 5000);
