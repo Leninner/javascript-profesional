@@ -1,5 +1,3 @@
-const { report } = require("process");
-
 const VERSION = "v1";
 
 self.addEventListener("install", (event) => {
@@ -8,31 +6,29 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
     const request = event.request;
-
-    //get
+    // get
     if (request.method !== "GET") {
         return;
     }
 
-    //buscar en cache
+    // buscar en cache
     event.respondWith(cachedResponse(request));
 
-    // actualizar en cache
+    // actualizar el cache
     event.waitUntil(updateCache(request));
 });
 
 async function precache() {
     const cache = await caches.open(VERSION);
-
     return cache.addAll([
-        "./",
-        "./index.html",
-        "./assets/plugins/autoPause.ts",
-        "./assets/plugins/autoPlay.ts",
-        "./assets/index.ts",
-        "./assets/mediaPlayer.ts",
-        "./assets/index.css",
-        "./assets/BigBuckBunny.mp4",
+        "/",
+        "/index.html",
+        "/assets/index.js",
+        "/assets/MediaPlayer.js",
+        "/assets/plugins/AutoPlay.js",
+        "/assets/plugins/AutoPause.ts",
+        "/assets/index.css",
+        "/assets/BigBuckBunny.mp4",
     ]);
 }
 
@@ -41,8 +37,6 @@ async function cachedResponse(request) {
     const response = await cache.match(request);
     return response || fetch(request);
 }
-
-//NOTE: Con esta función nos aseguramos de que el usuario siempre está recibiendo contenido actualizado
 
 async function updateCache(request) {
     const cache = await caches.open(VERSION);
